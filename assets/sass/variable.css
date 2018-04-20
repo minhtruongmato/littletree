@@ -1,0 +1,32 @@
+/*
+MAIN VARIABLES FOR SITE
+
+AUTHOR: hung.luong@matocreative.vn
+
+CONTENT:
+
+1/RESET BOOTSTRAP
+2/VARIBLES
+3/MIXINS
+
+ */
+/*
+========== RESET BOOTSTRAP ==========
+ */
+@font-face {
+  font-family: 'sanFranciscoR';
+  src: url("../fonts/SanFranciscoDisplay-Regular.otf"); }
+@font-face {
+  font-family: 'sanFranciscoT';
+  src: url("../fonts/SanFranciscoDisplay-Thin.otf"); }
+@font-face {
+  font-family: 'centur';
+  src: url("../fonts/UTM%20Centur.ttf"); }
+/*
+========== VARIABLES ==========
+ */
+/*
+========== MIXINS ==========
+ */
+
+/*# sourceMappingURL=variable.css.map */

@@ -1,0 +1,26 @@
+/*
+MAIN RESPONSIVE STYLE OF SITE
+
+AUTHOR: hung.luong@matocreative.vn
+
+CONTENT:
+
+1/MOBILE
+2/TABLET
+3/DESKTOP
+
+ */
+/*
+========== MOBILE ==========
+ */
+@media (max-width: 768px) {
+  .header .logo {
+    top: 15px; } }
+/*
+========== TABLET ==========
+ */
+/*
+========== DESKTOP ==========
+ */
+
+/*# sourceMappingURL=responsive.css.map */

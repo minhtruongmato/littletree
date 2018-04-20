@@ -1,0 +1,132 @@
+/*
+MAIN RESPONSIVE STYLE OF SITE
+
+AUTHOR: hung.luong@matocreative.vn
+
+CONTENT:
+
+1/MOBILE
+2/TABLET
+3/DESKTOP
+
+ */
+
+/*
+========== MOBILE ==========
+ */
+
+@media (max-width: 768px){
+    .header{
+        background-color: #333;
+
+        .container{
+            height: 100px;
+
+            .logo{
+                left: 15px;
+                margin-left: 0;
+
+                img{
+                    width: 50%;
+                }
+            }
+
+            .nav-expand{
+                top: 100%;
+                background-color: #333;
+
+                z-index: 999;
+
+                .left, .right{
+                    float: left;
+
+                    ul{
+                        li{
+                            display: list-item;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .slide#slider{
+        height: 100%;
+
+        .carousel-inner{
+            .slide-banner{
+                width: 90%;
+                height: auto;
+                top: 40%;
+                left: 5%;
+
+                .image{
+                    width: 100%;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+
+    .main-content{
+        .content{
+            padding-top: 50px;
+            padding-bottom: 50px;
+
+            .mask{
+                width: 300px;
+                height:300px
+            }
+        }
+
+        .break{
+            .container{
+                .title{
+                    width: 100%;
+                }
+            }
+        }
+
+        .container-fluid#gallery{
+            .slide#slideGallery{
+                .item{
+                    .inner{
+                        padding: 5px;
+
+                        .mask{
+                            width: 50vw;
+                            height: 50vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*
+========== TABLET ==========
+ */
+
+@media (min-width: 768px) and (max-width: 992px){
+    .main-content{
+        .content{
+            .mask{
+                width: 300px;
+                height:300px
+            }
+        }
+    }
+}
+
+/*
+========== SMALL DESKTOP ==========
+ */
+
+@media (min-width: 992px){
+    .main-content{
+        .content{
+
+        }
+    }
+}
