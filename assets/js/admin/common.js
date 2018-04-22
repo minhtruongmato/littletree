@@ -85,8 +85,8 @@ function remove(controller, id, message){
     }
 }
 
-function active(controller, id, question) {
-    var url = HOSTNAME + 'admin/' + controller + '/active';
+function cancel(controller, id, question) {
+    var url = HOSTNAME + 'admin/' + controller + '/change_cancel';
     if(confirm(question)){
         $.ajax({
             method: "post",
@@ -95,20 +95,9 @@ function active(controller, id, question) {
                 id : id, csrf_seafood_token : csrf_hash
             },
             success: function(response){
-                if(response.success == true){
+                if(response.status == 200){
                     csrf_hash = response.reponse.csrf_hash;
-                    switch(controller){
-                        case 'event' :
-                            alert('Mở sự kiện thành công');
-                            break;
-                        case 'order' :
-                            alert('Xác nhận đặt bàn thành công');
-                            break;
-                    }
-                    
-                    location.reload();
-                }else{
-                    alert('Hiện có 1 sự kiện đang được sử dụng. Vui lòng tắt sự kiện đó rồi thực hiện lại thao tác!');
+                    alert('Hủy đơn hàng thành công');
                     location.reload();
                 }
             },
@@ -119,8 +108,8 @@ function active(controller, id, question) {
     }
 }
 
-function deactive(controller, id, question) {
-    var url = HOSTNAME + 'admin/' + controller + '/deactive';
+function ongoing(controller, id, question) {
+    var url = HOSTNAME + 'admin/' + controller + '/change_ongoing';
     if(confirm(question)){
         $.ajax({
             method: "post",
@@ -131,15 +120,32 @@ function deactive(controller, id, question) {
             success: function(response){
                 csrf_hash = response.reponse.csrf_hash;
                 if(response.status == 200){
-                    
-                    switch(controller){
-                        case 'event' :
-                            alert('Tắt sự kiện thành công');
-                            break;
-                        case 'order' :
-                            alert('Hủy đặt bàn thành công');
-                            break;
-                    }
+                    csrf_hash = response.reponse.csrf_hash;
+                    alert('Xác nhận đơn hàng thành công');
+                    location.reload();
+                }
+            },
+            error: function(jqXHR, exception){
+                console.log(errorHandle(jqXHR, exception));
+            }
+        });
+    }
+}
+
+function complete(controller, id, question) {
+    var url = HOSTNAME + 'admin/' + controller + '/change_complete';
+    if(confirm(question)){
+        $.ajax({
+            method: "post",
+            url: url,
+            data: {
+                id : id, csrf_seafood_token : csrf_hash
+            },
+            success: function(response){
+                csrf_hash = response.reponse.csrf_hash;
+                if(response.status == 200){
+                    csrf_hash = response.reponse.csrf_hash;
+                    alert('Đơn hàng đã hoàn thành');
                     location.reload();
                 }
             },

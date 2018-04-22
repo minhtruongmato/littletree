@@ -2,7 +2,7 @@
     <section class="content row">
         <div class="container col-md-12">
             <h3 style="text-transform: uppercase; text-align: center;">
-                Thư viện ảnh <p></p>
+                Danh sách mua hàng <p></p>
             </h3>
             <?php if ($this->session->flashdata('message_success')): ?>
                 <div class="alert alert-success alert-dismissible">
@@ -20,11 +20,11 @@
             <?php endif ?>
             <div class="row">
                 <div class="col-md-6">
-                    <a type="button" href="<?php echo base_url('admin/order/create') ?>" class="btn btn-primary">THÊM MỚI</a>
+                    
                 </div>
 
                 <div class="col-md-6">
-                    <form action="<?php echo base_url('admin/order/index') ?>" method="get">
+                    <form action="<?php echo base_url('admin/order/'. $temp) ?>" method="get">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Tìm kiếm ..." name="search" value="<?php echo $keywords ?>">
                             <span class="input-group-btn">
@@ -50,8 +50,7 @@
                                 <th>STT</th>
                                 <th>Mã giao dịch</th>
                                 <th>Tên khách hàng</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Số lượng</th>
+                                <th>Ngày đặt hàng</th>
                                 <th>Trạng thái</th>
                                 <th>Chi tiết</th>
                                 <th>Hành động</th>
@@ -65,8 +64,7 @@
                                         <td><?php echo $i++ ?></td>
                                         <td><?php echo $value['unique_code']; ?></td>
                                         <td><?php echo $value['customer_name']; ?></td>
-                                        <td><?php echo $value['title']; ?></td>
-                                        <td><?php echo $value['product_quantity'] ?></td>
+                                        <td><?php echo date("d-m-Y / H:i:s",strtotime($value['created_at'])); ?></td>
                                         <td>
                                             <?php
                                                 switch ($value['status']) {
@@ -90,24 +88,16 @@
                                         </td>
                                         <td><a href="<?php echo base_url('admin/order/detail/'. $value['id']) ?>" title="Chi tiết" class="btn btn-primary">Xem</a></td>
                                         <td>
-                                            <a href="<?php echo base_url('admin/order/edit/'. $value['id']) ?>" title="Sửa"><i class="fa fa-fw fa-edit"></i></a>
+                                            <?php if ($value['status'] == 0): ?>
+                                                <a href="javascript:void(0);" title="Xác nhận" class="btn btn-primary" onclick="ongoing('order', <?php echo $value['id'] ?>, 'Chắc chắn xác nhận đơn hàng?')">Xác Nhận</a>
+                                            <?php elseif($value['status'] == 1): ?>
+                                                <a href="javascript:void(0);" title="Xác nhận" class="btn btn-success" onclick="complete('order', <?php echo $value['id'] ?>, 'Đóng đơn hàng này?')">Hoàn Thành</a>
+                                            <?php endif ?>
+                                            
                                             &nbsp&nbsp&nbsp&nbsp&nbsp
-                                            <a href="javascript:void(0);" title="Xóa" class="btn-remove" onclick="remove('order', <?php echo $value['id'] ?>, 'Chắc chắn xóa?)')" >
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
+                                            <a href="javascript:void(0);" title="Xác nhận" class="btn btn-danger" onclick="cancel('order', <?php echo $value['id'] ?>, 'Chắc chắn hủy đơn hàng?')">Hủy Bỏ</a>
                                         </td>
                                     </tr>
-
-                                    <!-- <tr class="remove_<?php echo $value['id'] ?>" >
-                                        <td style="width: 100px">
-                                            <img src="<?php echo base_url('assets/upload/banner/'. $value['image']) ?>" alt="" style="width: 200px">
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0);" title="Xóa" class="btn-remove" onclick="remove('banner', <?php echo $value['id'] ?>)" >
-                                                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </a>
-                                        </td>
-                                    </tr> -->
                                 <?php endforeach; ?>
                                 <?php endif; ?>
                             </tbody>
