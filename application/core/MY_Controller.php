@@ -180,20 +180,6 @@ class Public_Controller extends MY_Controller {
             $this->lang->load('vietnamese_lang', 'vietnamese');
         }
 
-        if($this->session->userdata('langAbbreviation') == 'en' || $this->session->userdata('langAbbreviation') == ''){
-            $langName = 'english';
-            $this->config->set_item('language', $langName);
-            $this->session->set_userdata("langAbbreviation",'en');
-            $this->lang->load('english_lang', 'english');
-        }
-
-        if($this->session->userdata('langAbbreviation') == 'cn' || $this->session->userdata('langAbbreviation') == ''){
-            $langName = 'chinese';
-            $this->config->set_item('language', $langName);
-            $this->session->set_userdata("langAbbreviation",'cn');
-            $this->lang->load('chinese_lang', 'chinese');
-        }
-
 
     }
 
